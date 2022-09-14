@@ -1,0 +1,22 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+.list-group {
+     
+    margin:auto;
+    float:left;
+    margin-right: 15px;
+   }
+   .lead {
+    
+    margin:auto;
+    left:0;
+    right:0;
+   }
+.desc {
+    width: 100%;
+}
+.fixed-bottom {
+	bottom: -90%;
+	position: absolute;
+}

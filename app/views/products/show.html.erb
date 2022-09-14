@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <!-- Image -->
+        <div class="col-12 col-lg-6">
+            <div class="card bg-light mb-3">
+            <div class="card-header"> <%= @product.name %></div>
+                <div class="card-body">
+                    <a href="" data-toggle="modal" data-target="#productModal">
+                        <%= image_tag(@product.image, style:'width:100%') %>
+                        <p class="text-center">Zoom</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add to cart -->
+        <div class="col-12 col-lg-6 add_to_cart_block">
+        
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <p class="price"><%= @product.price %>$</p>
+                      <div class="form-group">
+
+                        </div>
+                    <form>
+                    <h5>Stock: <span class="badge badge-secondary"><%= @product.stock %></span></h5>
+                        <div class="form-group">
+                            <label>Quantity :</label>
+        <%= button_to 'Add to cart', order_items_path(product_id: @product), class: 'button is-warning add-to-cart' %>
+                    </form>                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row desc">
+        <!-- Description -->
+        <div class="col-12">
+            <div class="card border-light mb-3">
+                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-align-justify"></i> Description</div>
+                <div class="card-body">
+                    <p class="card-text">
+                      <%= @product.description %>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="col-12" id="reviews">
+            <div class="card border-light mb-3">
+                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-comment"></i> Reviews</div>
+                <div class="card-body">
+                    <div class="review">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="badge badge-light"><i class="bi bi-arrow-return-left"> </i><%= link_to 'Back', products_path %>
+    <div class="badge badge-light"><i class="bi bi-arrow-return-left"> </i><%= link_to 'Edit', edit_product_path(@product) %>
+
+</div>
+
+
+                             
