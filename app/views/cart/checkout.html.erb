@@ -1,0 +1,49 @@
+<div id="cart-item">
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Product</th>
+              <th scope="col" class="text-center">Quantity</th>
+              <th scope="col" class="text-right">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @order_items.each do |item| %>
+              <tr>
+                <td></td>
+                <td><%= item.product.name %></td>
+                <td>
+                  <%= item.quantity %>
+                </td>
+                <td class="text-right"><%= item.product.price %> $</td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><strong>Total</strong></td>
+                <td class="text-right"><strong><%= item.total %> $</strong></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col mb-2">
+        <h3>Your current order has a total of: <%= current_order.subtotal %></h3>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6 text-right">
+<!--            <button class="btn btn-block btn-info text-uppercase">Checkout</button> -->
+          <%= link_to "Complete order", cart_complete_order_path(order_id: current_order.id), method: :post , class: "btn btn-block btn-info text-uppercase"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

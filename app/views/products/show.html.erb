@@ -26,8 +26,8 @@
                     <h5>Stock: <span class="badge badge-secondary"><%= @product.stock %></span></h5>
                         <div class="form-group">
                             <label>Quantity :</label>
-        <%= button_to 'Add to cart', order_items_path(product_id: @product), class: 'button is-warning add-to-cart' %>
                     </form>                   
+        <%= button_to 'Add to cart', order_items_path(product_id: @product), class: 'button is-warning add-to-cart' %>
                 </div>
             </div>
         </div>

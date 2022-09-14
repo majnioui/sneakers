@@ -2,9 +2,19 @@ class OrderItemsController < ApplicationController
   before_action :set_order
 
   def create
-    @order_item = @order.order_items.new(order_params)
-    @order.save
-    session[:order_id] = @order.id
+    # @order_item = @order.order_items.new(order_params)
+    # @order.save
+    # if there is line-item match new order item
+    # => change quantiy
+    # else
+    # => create
+    line_item = @order.order_items.find_by(product_id: order_params[:product_id])
+    if line_item
+      line_item.quantity += order_params[:quantity].to_i
+      line_item.save
+    else
+      line_item = @order.order_items.create(order_params)
+    end
   end
 
   def update
