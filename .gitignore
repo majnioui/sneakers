@@ -42,3 +42,5 @@ yarn-debug.log*
 
 
 .idea
+/config/local_env.yml
+config/local_env.yml
