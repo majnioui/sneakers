@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   get 'users/show'
   get 'users/edit'
   get 'users/update'

@@ -8,11 +8,14 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <%= link_to "Home", root_path, class: "nav-item nav-link #{@home == 'home' ? 'active' : ''}" %>	
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <%= link_to "Products", products_path, class: "nav-item nav-link #{@home == 'products' ? 'active' : ''}" %>	
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Products by categories", categories_path, class: "nav-item nav-link #{@home == 'products' ? 'active' : ''}" %>	
                 </li>
             </ul>
             <%= search_form_for @q do |f| %>
