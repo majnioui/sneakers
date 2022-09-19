@@ -63,9 +63,10 @@
             </div>
         </div>
     </div>
-    <div class="badge badge-light"><i class="bi bi-arrow-return-left"> </i><%= link_to 'Back', products_path %>
-    <div class="badge badge-light"><i class="bi bi-arrow-return-left"> </i><%= link_to 'Edit', edit_product_path(@product) %>
-
+    <div class="alert alert-secondary" role="alert">
+    <%= link_to 'Back', products_path, class:"btn btn-dark"  %>
+    <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-dark" %>
+    </div>
 </div>
 
 

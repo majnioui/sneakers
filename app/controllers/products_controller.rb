@@ -4,8 +4,13 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true)
+    if params.has_key?(:category)
+      @category = Category.find_by_name(params[:category])
+      @products = Product.where(category: @category)
+    else
+      @q = Product.ransack(params[:q])
+      @products = @q.result(distinct: true)
+    end
   end
 
   # GET /products/1 or /products/1.json

@@ -25,3 +25,14 @@
 <br>
 
 <%= link_to 'New Category', new_category_path %>
+
+
+ <div class="container">
+        <div align="center">
+            <h1 class="gallery-title">Producs by Categories</h1>
+         <% @categories.each do |category| %>
+           <%= link_to category.name, category, class: 'btn btn-default filter-button' %>
+            <% end %>
+        </div>
+    </div>
+</section>

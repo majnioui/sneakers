@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'rolify'
 gem 'friendly_id', '~> 5.4.0'
 gem 'ransack'
+gem 'pundit'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

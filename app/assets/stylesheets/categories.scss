@@ -1,3 +1,34 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.gallery-title
+{
+    font-size: 36px;
+    color: #17a2b8;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+
+
+.filter-button:hover
+{
+    font-size: 18px;
+    border: 1px solid #5e5e5e;
+    border-radius: 5px;
+    text-align: center;
+    color: #f0f0f0 !important;
+    background-color: #5e5e5e;
+
+}
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin-bottom: 30px;
+}

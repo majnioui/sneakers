@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
     before_action :configure_permitted_parameters, if: :devise_controller?
+    include Pundit
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
     before_action :set_search
+
     protected
   
     def configure_permitted_parameters
@@ -14,4 +17,12 @@ class ApplicationController < ActionController::Base
     def set_search
       @q = Product.ransack(params[:q])
     end
+
+    private
+
+    def user_not_authorized
+      flash[:alert] = 'You are not authorized to perform this action'
+      redirect_to(request.referrer || root_path)
+    end
+    
 end

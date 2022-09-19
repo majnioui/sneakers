@@ -1,35 +1,33 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Stock</th>
-      <th>Featured</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.stock %></td>
-        <td><%= product.featured %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Product', new_product_path %>
+
+<div class="container">
+    <div class="row">
+        <div class="bg-light col-sm-6>
+    <% @products.each do |product| %>
+
+<div class="card" style="width: 18rem; margin:5px">
+  <%= image_tag product.image, class:"card-img-top", style:"width: 18rem; height: 10rem" %>
+  <div class="card-header"><h4><%= link_to product.name, product %></h4></div>
+  <div class="card-body">  
+    <div class="row">
+      <div class="col">
+        <p class="btn btn-danger btn-block disabled"><%= product.price%> $</p>
+      </div>
+      <div class="col">
+      <%= form_with model: @order_item do |f| %>
+        <%= f.hidden_field :product_id, value: product.id %>
+        <%= f.number_field :quantity, value: 1, min: 1, style:"display:none"%>
+        <a><%= f.submit "Add To Cart", class:"btn btn-success btn-block" %></a>
+<%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_product_path(product) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
