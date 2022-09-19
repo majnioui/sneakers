@@ -2,10 +2,14 @@
 
 
 .list-group {
-     
     margin:auto;
     float:left;
     margin-right: 15px;
+    margin-top: 5px;
+   }
+   .list-group-item.active {
+    background-color: #343a40;
+    border-color: #343a40;
    }
    .lead {
     
@@ -19,4 +23,7 @@
 .fixed-bottom {
 	bottom: -90%;
 	position: absolute;
+}
+.btn {
+ border: 1px solid #343a40;  
 }
