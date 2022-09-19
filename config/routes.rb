@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post 'cart/complete-order', to: 'cart#complete_order'
 
   get 'checkout', to: 'cart#checkout'
-  resources :products
+  resources :products do
+    resources :reviews
+  end
   resources :orders
   root 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

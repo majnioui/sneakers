@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attr_writer :login
   has_many :orders
-  has_many :products
+  has_many :products, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+
   # validate user to have at least 1 role (incase accidentally remove all roles from user)
   #alidate :must_have_a_role, on: :update
   # middleware to assign default role after creating new user

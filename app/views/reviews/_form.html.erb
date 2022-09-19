@@ -1,0 +1,9 @@
+<button type="button" class="btn btn-outline-info text-center">Write a review</button>
+<br/>
+<div id='writeReview'>
+<br/>
+<%= form_with(model: [product, product.reviews.build]) do |f| %>
+    <%= f.rich_text_area :body %>
+    <%= f.submit "Reply", class: "btn btn-primary mt-1" %>
+<% end %>
+</div>
