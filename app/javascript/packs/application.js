@@ -24,6 +24,12 @@ document.addEventListener("turbolinks:load", function() {
         $('[data-toggle="popover"]').popover()
     })
 })
+$(document).ready(function(){
+    $("#writeReview").hide();
+    $("button").click(function(){
+      $("#writeReview").toggle();
+    });
+  });
 
 require("trix")
 require("@rails/actiontext")

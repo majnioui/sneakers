@@ -7,4 +7,5 @@ class Product < ApplicationRecord
     has_one :action_text_rich_text, class_name: 'ActionText::RichText', as: :record
     validates :category_id, presence: true
     belongs_to :category
+    has_many :reviews, dependent: :destroy
 end

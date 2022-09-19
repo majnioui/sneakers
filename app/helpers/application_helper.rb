@@ -2,7 +2,10 @@ module ApplicationHelper
   def current_order
     # Use Find by id to avoid potential errors
     # Find a cart from user.orders
+    if authenticate_user!
     current_user.cart || current_user.new_cart
+    else
+    end
   end
   def resource_name
     :user

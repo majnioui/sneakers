@@ -1,0 +1,12 @@
+<div class="review-<%= review.id %> container">
+  <%= review.user.username %><br />
+  <span>Posted <%= time_ago_in_words(review.created_at) %></span>
+  <% if current_user == review.user %>
+    <div class="button-group float-end">
+      <%= button_to "Delete", [product, review], class:"btn btn-outline-danger", method: :delete %>
+    </div>
+  <% end %>
+  <br />
+  <%= review.body %>
+  <hr />
+</div>
