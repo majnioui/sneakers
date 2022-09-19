@@ -3,12 +3,16 @@
         <!-- Image -->
         <div class="col-12 col-lg-6">
             <div class="card bg-light mb-3">
-            <div class="card-header"> <%= @product.name %></div>
+            <div class="card-header"> <%= @product.name %>
+            </div>
                 <div class="card-body">
                     <a href="" data-toggle="modal" data-target="#productModal">
                         <%= image_tag(@product.image, style:'width:100%') %>
-                        <p class="text-center">Zoom</p>
                     </a>
+                    <p class="text-center">
+                        <strong>Category: </strong>
+                        <%= link_to @product.category.name, @product.category %>
+                    </p>
                 </div>
             </div>
         </div>
@@ -26,8 +30,8 @@
                     <h5>Stock: <span class="badge badge-secondary"><%= @product.stock %></span></h5>
                         <div class="form-group">
                             <label>Quantity :</label>
-        <%= button_to 'Add to cart', order_items_path(product_id: @product), class: 'button is-warning add-to-cart' %>
                     </form>                   
+        <%= button_to 'Add to cart', order_items_path(product_id: @product), class: 'button is-warning add-to-cart' %>
                 </div>
             </div>
         </div>
