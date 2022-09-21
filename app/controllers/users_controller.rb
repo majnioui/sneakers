@@ -1,29 +1,37 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :edit, :show, :my]
+
   def show
   end
 
-  def edit
+  def my
+    
   end
+  # def show
+  # end
 
-  def update
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: "Successfully updated"
-    else
-      render :edit
-    end
-  end
+  # def edit
+  # end
 
-  def index
-    @users = User.all
-    authorize @users
-  end
-  private
+  # def update
+  #   if @user.update(user_params)
+  #     redirect_to user_path(@user), notice: "Successfully updated"
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  def set_user
-    @user = User.friendly.find(params[:id])
-  end
+  # def index
+  #   @users = User.all
+  #   authorize @users
+  # end
+  # private
 
-  def user_params
-    params.require(:user).permit({ role_ids: [] })
-  end
+  # def set_user
+  #   @user = User.friendly.find(params[:id])
+  # end
+
+  # def user_params
+  #   params.require(:user).permit({ role_ids: [] })
+  # end
 end

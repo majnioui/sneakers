@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  
   after_create :assign_default_role
 
 
@@ -19,9 +20,10 @@ class User < ApplicationRecord
     end
   end
 
-  #def must_have_a_role
-   # errors.add(:roles, 'must have at least one role') unless roles.any?
-  #end
+  def must_have_a_role
+   errors.add(:roles, 'must have at least one role') unless roles.any?
+  end
+
    def validate_username
      if User.where(email: username).exists?
        errors.add(:username, :invalid)

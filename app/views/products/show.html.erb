@@ -7,7 +7,9 @@
             </div>
                 <div class="card-body">
                     <a href="" data-toggle="modal" data-target="#productModal">
-                        <%= image_tag(@product.image, style:'width:100%') %>
+                        <% if @product.image.present? %>
+                            <%= image_tag(@product.image, style:'width:100%') %>
+                        <% end %>
                     </a>
                     <p class="text-center">
                         <strong>Category: </strong>
