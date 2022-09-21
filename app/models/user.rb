@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,20 +8,16 @@ class User < ApplicationRecord
   has_many :orders
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  after_create :assign_default_role
 
-  # validate user to have at least 1 role (incase accidentally remove all roles from user)
-  #alidate :must_have_a_role, on: :update
-  # middleware to assign default role after creating new user
-  #after_create :assign_default_role
-  #validate :validate_username
 
-  #def assign_default_role
-   # if User.count == 1
-   #   add_role(:admin) if roles.blank?
-    #elsif roles.blank?
-     # add_role(:user)
-    #end
-  #end
+  def assign_default_role
+   if User.count == 1
+     add_role(:admin) if roles.blank?
+    elsif roles.blank?
+     add_role(:user)
+    end
+  end
 
   #def must_have_a_role
    # errors.add(:roles, 'must have at least one role') unless roles.any?
