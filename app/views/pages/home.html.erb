@@ -11,7 +11,9 @@
         <div class="bg-light col-sm-6>
     <% @products.each do |product| %>
 <div class="card" style="width: 18rem; margin:5px">
-  <%= image_tag product.image, class:"card-img-top", style:"width: 18rem; height: 10rem" %>
+  <% if product.image.present? %>
+    <%= image_tag product.image, class:"card-img-top", style:"width: 18rem; height: 10rem" %>
+  <% end %>
   <div class="card-header"><h4><%= link_to product.name, product %></h4></div>
   <div class="card-body">  
     <div class="row">
@@ -52,7 +54,9 @@
   <div class="info">
   <% category.products.order(id: :desc).limit(5).each do |product| %> 
 <div class="product-row">
-<%= image_tag(product.image, style: 'width:180px; height: 180px;')%>
+  <% if product.image.present? %>
+    <%= image_tag(product.image, style: 'width:180px; height: 180px;')%>
+  <% end %>
    <h6> <%= link_to product.name, product %> </h6>
    <h7> <%= product.price %> $ </h7> <br>
    </div>

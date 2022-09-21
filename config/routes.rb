@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
+  root 'pages#home'
   resources :categories
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/index'
+
+  
   devise_for :users
   resources :order_items
   get 'cart', to: 'cart#show'
@@ -14,6 +13,15 @@ Rails.application.routes.draw do
     resources :reviews
   end
   resources :orders
-  root 'pages#home'
+
+
+  get 'my-profile', to: 'users#my'
+  get 'my-profile/orders', to: 'orders#index'
+  get 'my-profile/orders/:id', to: 'orders#show', as: "my_order"
+
+  
+  get 'admin', to: 'admin#index'
+  get 'admin/orders', to: 'admin#orders'
+  get 'admin/orders/:order_id', to: 'admin#order', as: "admin_order"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
