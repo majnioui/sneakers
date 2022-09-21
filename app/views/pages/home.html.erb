@@ -37,3 +37,22 @@
 
     </div>
 </div>
+
+<% @categories.each do |category| %>
+
+    
+<div class="cat" style="margin-bottom:30px;margin-top:80px;text-align:center;">
+ <h1> <%= link_to category.name, category %> </h1>
+ <small><%= pluralize(category.products.count, "products") %></small>
+ </div>
+  <div class="info">
+  <% category.products.order(id: :desc).limit(5).each do |product| %> 
+<div class="product-row">
+<%= image_tag(product.image, style: 'width:180px; height: 180px;')%>
+   <h6> <%= product.name %> </h6>
+   <h7> <%= product.price %> $ </h7> <br>
+   </div>
+   <% end %>
+   </div>
+  
+ <% end %>
