@@ -57,12 +57,12 @@
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-comment"></i> Reviews</div>
                 <div class="card-body">
                     <div class="review">
-                            <% @reviews.each do |review| %>
-    <%= render 'reviews/review', product: @product, review: review %>
-  <% end %>
-  <br />
-<%= render 'reviews/form', product: @product %>
-</div>
+                        <% @reviews.each do |review| %>
+                            <%= render 'reviews/review', product: @product, review: review %>
+                        <% end %>
+                            <br />
+                            <%= render 'reviews/form', product: @product %>
+                    </div>
                 </div>
             </div>
         </div>
