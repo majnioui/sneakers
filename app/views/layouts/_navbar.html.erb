@@ -25,11 +25,10 @@
                 </div>
                 </form>
                 <% end %>
-            <form class="form-inline my-2 my-lg-0">
-                <a class="btn btn-info btn-lg btn-sm ml-3" href="cart">
-                    <i class="bi bi-cart"></i> Cart
-                    <span class="badge badge-light">3</span>
-                </a>
+            <form class="form-inline my-2 my-lg-0">cart
+                <%= link_to cart_path, class:'btn btn-info btn-lg btn-sm ml-3' do %>
+
+                <% end %>
                 <% if current_user %>
                 <a class="btn btn-outline-info btn-sm ml-3 ">
                 <%= current_user.username%>

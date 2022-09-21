@@ -1,6 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :set_order
-
+  skip_before_action :verify_authenticity_token
   def create
     # @order_item = @order.order_items.new(order_params)
     # @order.save
@@ -15,6 +15,7 @@ class OrderItemsController < ApplicationController
     else
       line_item = @order.order_items.create(order_params)
     end
+    redirect_to product_path(order_params[:product_id])
   end
 
   def update

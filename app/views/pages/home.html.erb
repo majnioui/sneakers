@@ -19,11 +19,15 @@
         <p class="btn btn-danger btn-block disabled"><%= product.price%> $</p>
       </div>
       <div class="col">
-      <%= form_with model: @order_item do |f| %>
-        <%= f.hidden_field :product_id, value: product.id %>
-        <%= f.number_field :quantity, value: 1, min: 1, style:"display:none"%>
-        <a><%= f.submit "Add To Cart", class:"btn btn-success btn-block" %></a>
+      <% if @order_item %>
+        <%= form_with model: @order_item do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <%= f.number_field :quantity, value: 1, min: 1, style:"display:none" %>
+          <%= f.submit "Add To Cart", class:"btn btn-success btn-block" %>
         <% end %>
+      <% else %>
+        <%= link_to 'Add To Cart', new_user_session_path, class:'btn btn-success' %>
+      <% end %>
       </div>
     </div>
   </div>
@@ -49,7 +53,7 @@
   <% category.products.order(id: :desc).limit(5).each do |product| %> 
 <div class="product-row">
 <%= image_tag(product.image, style: 'width:180px; height: 180px;')%>
-   <h6> <%= product.name %> </h6>
+   <h6> <%= link_to product.name, product %> </h6>
    <h7> <%= product.price %> $ </h7> <br>
    </div>
    <% end %>

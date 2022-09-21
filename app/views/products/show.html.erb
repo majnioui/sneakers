@@ -31,7 +31,16 @@
                         <div class="form-group">
                             <label>Quantity :</label>
                     </form>                   
-        <%= button_to 'Add to cart', order_items_path(product_id: @product), class: 'button is-warning add-to-cart' %>
+      <%= form_with(model: @order_item, remote: true) do |f| %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.number_field :quantity, value: 1, min: 1, style:"display:none"%>
+          <% if current_user.present? %>
+            <%= f.submit "Add To Cart", class:"btn btn-success btn-block" %>
+          <% else %>
+            <%= link_to "Login to buy", new_user_session_path, class:"btn btn-success btn-block" %>
+          <% end %>
+        <% end %>
+
                 </div>
             </div>
         </div>
