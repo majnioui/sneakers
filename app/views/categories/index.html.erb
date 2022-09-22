@@ -1,38 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
-
-
  <div class="container">
-        <div align="center">
-            <h1 class="gallery-title">Producs by Categories</h1>
-         <% @categories.each do |category| %>
-           <%= link_to category.name, category, class: 'btn btn-default filter-button' %>
-            <% end %>
+ <p id="notice"><%= notice %></p>
+ <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+ <%= link_to 'New Category', new_category_path %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+ <center><h1> ✘ Shop by Category ✘</h1></center>
+  <div class="row mt-3">
+    <% Category.all.each do |category| %>   
+    <div class="col-3">
+      <div class="do-item do-item-circle do-circle">
+         <% if category.image.present? %>
+          <%= image_tag category.image, class:"do-item do-circle" %>
+         <% end %>
+        <div class="do-info-wrap do-circle">
+          <div class="do-info">
+            <div class="do-info-front do-circle"></div>
+            <div class="do-info-back do-circle">
+              <h3><%= link_to category.name, products_path(category: category.name) %></h3>
+              <%= link_to 'Edit', edit_category_path(category) %>
+              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  <% end %> 
+  </div>
+</div>

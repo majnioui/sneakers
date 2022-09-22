@@ -4,6 +4,6 @@
 <br/>
 <%= form_with(model: [product, product.reviews.build]) do |f| %>
     <%= f.rich_text_area :body %>
-    <%= f.submit "Reply", class: "btn btn-primary mt-1" %>
+    <%= f.submit "Submit review", class: "btn btn-outline-dark mt-1" %>
 <% end %>
 </div>

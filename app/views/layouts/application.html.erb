@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Sneakershop</title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,10 +15,8 @@
 
   <body> 
   <%= render 'layouts/navbar' %>
-  <div class="container">
-  <%= render 'layouts/main' %>
-      <%= yield %>
-  </div>
+        <%= yield %>
+
   <%= render 'layouts/footer' %>
   </body>
 </html>
