@@ -3,9 +3,9 @@
         <!-- Image -->
         <div class="col-12 col-lg-6">
             <div class="card bg-light mb-3">
-            <div class="card-header"> <%= @product.name %>
+            <div class="card-header"> <h1><%= @product.name %></h1>
             </div>
-                <div class="card-body">
+                <div class="product-image card-body">
                     <a href="" data-toggle="modal" data-target="#productModal">
                         <% if @product.image.present? %>
                             <%= image_tag(@product.image, style:'width:100%') %>
@@ -35,19 +35,29 @@
                     </form>                   
       <%= form_with(model: @order_item, remote: true) do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.number_field :quantity, value: 1, min: 1, style:"display:none"%>
+        <%= f.number_field :quantity, value: 1, min: 1, class:"form-control form-control-sm inline"%>
+        <br/>
           <% if current_user.present? %>
-            <%= f.submit "Add To Cart", class:"btn btn-success btn-block" %>
+            <%= f.submit "Add To Cart", class:"btn btn-dark btn-block" %>
           <% else %>
-            <%= link_to "Login to buy", new_user_session_path, class:"btn btn-success btn-block" %>
+            <%= link_to "Login to buy", new_user_session_path, class:"btn btn-dark btn-block" %>
           <% end %>
         <% end %>
 
                 </div>
             </div>
         </div>
-    </div>
+        <div class="card bg-light mb-3">
+                    <div class="card-header"> <h5>Size guide</h5>
+            </div>
+                <div class="product-image card-body", style="width: -webkit-fill-available !important;">
+                 <img src="https://stilettissimo.com/wp-content/uploads/2019/07/size-guide-women-shoes.png" alt="Flowers in Chania">
 
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row desc">
         <!-- Description -->
         <div class="col-12">

@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-        <%= link_to "Sneakers Shop", root_path, class: "navbar-brand #{@home == 'home' ? 'active' : ''}" %>	
+        <%= link_to "Shoes As You Go", root_path, class: "navbar-brand #{@home == 'home' ? 'active' : ''}" %>	
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,12 +25,14 @@
                 </div>
                 </form>
                 <% end %>
-            <form class="form-inline my-2 my-lg-0">cart
+            <form class="form-inline my-2 my-lg-0">
                 <%= link_to cart_path, class:'btn btn-info btn-lg btn-sm ml-3' do %>
-
+                <i class="bi bi-cart"></i> Cart
                 <% end %>
+
                 <% if current_user %>
                 <a class="btn btn-outline-info btn-sm ml-3 ">
+                <i class="bi bi-person"></i>
                 <%= current_user.username%>
                 </a>
                   <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-info btn-sm ml-3" %>

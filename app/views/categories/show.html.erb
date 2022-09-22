@@ -1,34 +1,45 @@
-<h2>
-  <strong>Category:</strong>
-  <%= @category.name %>
-</h2>
-<div class="container">
-    <div class="row">
-        <div class="bg-light col-sm-6>
-   <% @category.products.each do |product| %>
 
-<div class="card" style="width: 18rem; margin:5px">
-  <%= image_tag product.image, class:"card-img-top", style:"width: 18rem; height: 10rem" %>
-  <div class="card-header"><h4><%= link_to product.name, product %></h4></div>
-  <div class="card-body">  
-    <div class="row">
-      <div class="col">
-        <p class="btn btn-danger btn-block disabled"><%= product.price%> $</p>
-      </div>
-      <div class="col">
-      <%= form_with model: @order_item do |f| %>
-        <%= f.hidden_field :product_id, value: product.id %>
-        <%= f.number_field :quantity, value: 1, min: 1, style:"display:none"%>
-        <a><%= f.submit "Add To Cart", class:"btn btn-success btn-block" %></a>
-          <%= link_to 'Edit', edit_category_path(@category) %> |
+
+
+
+
+
+<div class="container">
+<div class="product-grid-title">
+ <center><h1> ✘ <%= link_to @category.name %> </h1>
+  <small><%= pluralize(@category.products.count, "products") %></small>
+  </center>
+  </div>
+  <center>
+            <%= link_to 'Edit', edit_category_path(@category) %> |
           <%= link_to 'Back', categories_path %>
+          </center>
+    <div class="row", style="padding-bottom:10%">
+   <% @category.products.each do |product| %>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+  <% if product.image.present? %>
+    <%= image_tag product.image, class:"card-img-top", style:"width: 18rem; height: 16rem" %>
+  <% end %>
+  <span class="product-discount-label"><%= product.price%>$</span>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><%= link_to product.name, product %></h3>
+                    <div class="Add-to-cart">
+                          <% if @order_item %>
+        <%= form_with model: @order_item do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <%= f.number_field :quantity, value: 1, min: 1, style:"display:none" %>
+          <%= f.submit "Add To Cart", class:"btn btn-light btn-sm" %>
         <% end %>
+      <% else %>
+        <%= link_to 'Add To Cart', new_user_session_path, class:'btn btn-light btn-sm' %>
+      <% end %>
       </div>
+                </div>
+            </div>
+        </div>
+            <% end %>
     </div>
-  </div>
-</div>
-    <% end %>
-      </div>
-    </div>
-  </div>
 </div>
