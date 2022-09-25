@@ -21,14 +21,14 @@ class ApplicationController < ActionController::Base
     private
 
     def user_not_authorized
-      flash[:notice] = 'You are not authorized to perform this action'
+      flash[:notice] = 'You should be admin aka seller to be able to perform this action'
       redirect_to(request.referrer || root_path)
     end
     
     def admin_required
       authenticate_user!
       if !current_user.has_role?(:admin)
-        flash[:notice] = 'You are not authorized to perform this action'
+        flash[:notice] = 'You should be admin aka seller to be able to perform this action'
         return redirect_to(request.referrer || root_path)
       end
     end
