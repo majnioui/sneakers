@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @order_item = current_order.order_items.new
+    @order_item = current_order.order_items.new if current_order
     @reviews = @product.reviews.order(created_at: :desc)
   end
 

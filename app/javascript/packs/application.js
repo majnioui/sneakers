@@ -24,8 +24,8 @@ document.addEventListener("turbolinks:load", function() {
         $('[data-toggle="popover"]').popover()
     })
 })
-$(document).ready(function(){
-    $("#writeReview").hide();
+document.addEventListener("turbolinks:load", function() {
+  $("#writeReview").hide();
     $("button").click(function(){
       $("#writeReview").toggle();
     });
