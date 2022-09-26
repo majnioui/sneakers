@@ -34,7 +34,7 @@
 
                 <% if current_user %>
                 <%= link_to edit_user_registration_path, class:'btn btn-outline-info btn-sm ml-3' do %>
-                <i class="bi bi-person"></i> <%= current_user.username%>
+                <i class="bi bi-person"></i> <%= current_user.username.capitalize %>
                 <% end %>
                   <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-info btn-sm ml-3" %>
                 <% else %>
